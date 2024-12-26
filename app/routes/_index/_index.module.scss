@@ -2,12 +2,14 @@
 
 .root {
     margin: 0 auto;
-    padding: 2.3em 3em 2em;
+    padding: 1em 3em 2em;
     text-align: center;
     display: flex;
     flex-direction: column;
-    border: 2px dashed #888888;
-    border-radius: 30px;
+
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
 }
 
 .title {
@@ -20,4 +22,8 @@
     display: flex;
     gap: 3px;
     justify-content: center;
+}
+
+.content {
+    height: 100%;
 }

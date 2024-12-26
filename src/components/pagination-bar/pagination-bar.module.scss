@@ -1,0 +1,22 @@
+@import '../../../src/styles/theme.module.scss';
+
+.root {
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    position: sticky;
+    top: 100%;
+
+    padding: 10px 0;
+}
+
+.pageNumberInput {
+    padding: 0 10px;
+    width: 60px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}

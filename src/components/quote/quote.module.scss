@@ -1,0 +1,27 @@
+@import '../../../src/styles/theme.module.scss';
+
+.root {
+    padding: 18px 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 1.41px 1.41px 2px rgba(0, 0, 0, 0.2);
+    clear: both;
+    float: left;
+    text-align: left;
+
+    max-width: 400px;
+}
+
+.root.even {
+    float: right;
+}
+
+.QuoteText {
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+.QuoteAuthor {
+    font-size: x-small;
+    text-align: right;
+}

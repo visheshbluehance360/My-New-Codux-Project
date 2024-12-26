@@ -56,7 +56,7 @@ function getErrorDetails(error: unknown) {
             message = error.data?.message ?? '';
         }
     } else {
-        title = 'Unknown error ocurred';
+        title = 'Unknown error occurred';
     }
 
     return { title, message };

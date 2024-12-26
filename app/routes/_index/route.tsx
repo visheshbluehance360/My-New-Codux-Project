@@ -1,29 +1,50 @@
-import classNames from 'classnames';
 import styles from './_index.module.scss';
 import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import commonStyles from '~/styles/common-styles.module.scss';
 import { getUrlOriginWithPath } from '~/utils';
-import TypescriptSvg from '../../../src/assets/svg/typescript.svg';
-import ViteSvg from '../../../src/assets/svg/vite.svg';
+
+import { useState, useEffect } from 'react';
+import { QuoteItem } from '../../../src/components/quote/quote';
+import styles0 from './route.module.scss';
+import { PaginationBar } from '../../../src/components/pagination-bar/pagination-bar';
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
     return { canonicalUrl: getUrlOriginWithPath(request.url) };
 };
 
 export default function HomePage() {
+    const [quotes, setQuotes] = useState([]);
+    const [pageCount, setPageCount] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const PageSize = 3;
+
+    useEffect(() => {
+        fetch(`https://dummyjson.com/quotes?limit=${PageSize}&skip=${(currentPage * PageSize) - PageSize}`)
+            .then((res) => res.json())
+            .then((json) => {
+                console.log(json);
+
+                setQuotes(json.quotes);
+
+                const numberOfPages = Math.ceil(json.total / json.limit);
+
+                setPageCount(numberOfPages);
+            });
+    }, [setQuotes, currentPage]);
+
     return (
         <div className={styles.root}>
-            <h2 className={styles.title}>Welcome to your App Homepage 🎉</h2>
-            <span>
-                Double click to edit App component
-                <br />
-                &amp; drag here elements from + Add <b>Elements</b> Panel
-            </span>
-            <p className={styles.paragraph}>
-                This project is using <img src={ViteSvg} width="12" />+
-                <img src={TypescriptSvg} width="12" />
-                Visit vitejs.dev to learn more.{' '}
-            </p>
+            <header className={styles0.header1}>
+                <h2 className={styles.title}>Welcome to Homepage 🎉</h2>
+                <span>The project will be using JSONPlaceholder API</span>
+            </header>
+            <div className={styles.content}>
+                {quotes.map((quote, index) => (
+                    <QuoteItem key={index} quote={quote} />
+                ))}
+
+                <PaginationBar pageCount={pageCount} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            </div>
         </div>
     );
 }
