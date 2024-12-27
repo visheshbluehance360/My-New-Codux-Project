@@ -6,10 +6,13 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-
     width: 100%;
     max-width: 1200px;
     height: 100%;
+}
+
+.header {
+    margin-bottom: 60px;
 }
 
 .title {

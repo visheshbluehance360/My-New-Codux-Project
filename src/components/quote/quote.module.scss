@@ -4,12 +4,13 @@
     padding: 18px 30px;
     border-radius: 10px;
     margin-bottom: 40px;
-    box-shadow: 1.41px 1.41px 2px rgba(0, 0, 0, 0.2);
     clear: both;
     float: left;
     text-align: left;
-
     max-width: 400px;
+
+    box-shadow: 1.41px 1.41px 2px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff80;
 }
 
 .root.even {

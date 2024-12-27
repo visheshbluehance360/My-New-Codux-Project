@@ -4,7 +4,6 @@ import { getUrlOriginWithPath } from '~/utils';
 
 import { useState, useEffect } from 'react';
 import { QuoteItem } from '../../../src/components/quote/quote';
-import styles0 from './route.module.scss';
 import { PaginationBar } from '../../../src/components/pagination-bar/pagination-bar';
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
@@ -19,7 +18,11 @@ export default function HomePage() {
     const PageSize = 3;
 
     useEffect(() => {
-        fetch(`https://dummyjson.com/quotes?limit=${PageSize}&skip=${(currentPage * PageSize) - PageSize}`)
+        fetch(
+            `https://dummyjson.com/quotes?limit=${PageSize}&skip=${
+                currentPage * PageSize - PageSize
+            }`
+        )
             .then((res) => res.json())
             .then((json) => {
                 console.log(json);
@@ -34,7 +37,7 @@ export default function HomePage() {
 
     return (
         <div className={styles.root}>
-            <header className={styles0.header1}>
+            <header className={styles.header}>
                 <h2 className={styles.title}>Welcome to Homepage 🎉</h2>
                 <span>The project will be using JSONPlaceholder API</span>
             </header>
@@ -43,7 +46,11 @@ export default function HomePage() {
                     <QuoteItem key={index} quote={quote} />
                 ))}
 
-                <PaginationBar pageCount={pageCount} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                <PaginationBar
+                    pageCount={pageCount}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </div>
         </div>
     );

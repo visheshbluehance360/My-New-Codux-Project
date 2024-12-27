@@ -18,5 +18,15 @@
     padding: 0 10px;
     width: 60px;
     border: 1px solid #ccc;
-    border-radius: 2px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.pageNumberInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.pageNumberInput {
+    -moz-appearance: textfield;
 }
